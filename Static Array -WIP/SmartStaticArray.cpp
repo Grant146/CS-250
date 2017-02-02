@@ -9,7 +9,7 @@ bool SmartStaticArray::Push( const string& newItem )
 {
 	if (m_itemCount == MAX_SIZE)
 	{
-		return false; // temp
+		return false;
 	}
 
 	m_data[m_itemCount] = newItem;
@@ -36,10 +36,10 @@ bool SmartStaticArray::Insert( int index, const string& newItem )
 
 bool SmartStaticArray::Extend( const SmartStaticArray& other )
 {
-	if ()
-	{
-		return false; // temp
-	}
+	//if ()
+	//{
+		return false;
+	//}
 }
 
 
@@ -75,7 +75,15 @@ int SmartStaticArray::Size() const
 
 bool SmartStaticArray::IsFull() const
 {
-	return false; // temp
+	if(m_itemCount == MAX_SIZE)
+	{
+		return true;
+	}
+
+	else
+	{
+		return false;
+	}
 }
 
 bool SmartStaticArray::IsEmpty() const
@@ -86,7 +94,7 @@ bool SmartStaticArray::IsEmpty() const
 	}
 	else
 	{
-		return false; // temp
+		return false; 
 	}
 }
 
