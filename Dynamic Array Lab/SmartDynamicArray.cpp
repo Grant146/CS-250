@@ -16,6 +16,7 @@ SmartDynamicArray::~SmartDynamicArray()
 
 bool SmartDynamicArray::Push( const string& newItem )
 {
+
 	return false; // temp
 }
 
@@ -62,7 +63,15 @@ int SmartDynamicArray::GetMaxSize() const
 
 bool SmartDynamicArray::IsFull() const
 {
-	return false; // temp
+	if (m_itemCount == m_arraySize)
+	{
+		return true;
+	}
+
+	else
+	{
+		return false; // temp
+	}
 }
 
 bool SmartDynamicArray::IsEmpty() const
@@ -93,6 +102,10 @@ bool SmartDynamicArray::operator!=( const SmartDynamicArray& other )
 
 void SmartDynamicArray::Free()
 {
+	if(&m_data == nullptr)
+	{
+
+	}
 }
 
 void SmartDynamicArray::Resize()
@@ -103,6 +116,10 @@ void SmartDynamicArray::Resize()
 void SmartDynamicArray::Resize( int newSize )
 {
 }
+
+
+
+
 
 
 
