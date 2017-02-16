@@ -1,6 +1,3 @@
-#ifndef _LINKED_LIST_HPP
-#define _LINKED_LIST_HPP
-
 #include <iostream>
 #include <string>
 using namespace std;
@@ -94,6 +91,10 @@ public:
 
 	bool Remove(int index)
 	{
+		if ()
+		{
+
+		}
 		return false; // temp
 	}
 
