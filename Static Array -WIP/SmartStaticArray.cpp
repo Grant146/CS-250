@@ -121,18 +121,37 @@ bool SmartStaticArray::IsEmpty() const
 
 string SmartStaticArray::operator[](int index)
 {
-	return "placeholder"; // placeholder
+	return m_data[index]; // placeholder
 }
 
 
 SmartStaticArray& SmartStaticArray::operator=(const SmartStaticArray& other)
 {
-	return *this; // placeholder
+	m_itemCount = other.m_itemCount;
+	for (int i = 0; i < m_itemCount; i++)
+	{
+		m_data[i] = other.m_data[i];
+	}
+	return *this;
 }
 
 bool SmartStaticArray::operator==(const SmartStaticArray& other)
 {
-	return false;
+	if (m_itemCount == other.m_itemCount)
+	{
+		for (int i = 0; i < m_itemCount; i++)
+		{
+			if (!(m_data[i] == other.m_data[i]))
+			{
+				return false;
+			}
+		}
+	}
+	else
+	{
+		return false;
+	}
+	return true;
 }
 
 
