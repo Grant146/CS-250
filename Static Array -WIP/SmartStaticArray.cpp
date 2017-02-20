@@ -44,7 +44,11 @@ bool SmartStaticArray::Insert(int index, const string& newItem)
 
 bool SmartStaticArray::Extend(const SmartStaticArray& other)
 {
-	return false;
+	for (int i = 0; i < other.m_itemCount; i++)
+	{
+		Push(other.m_data[i]);
+	}
+	return true;
 }
 
 
