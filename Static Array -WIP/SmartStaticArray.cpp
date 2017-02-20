@@ -1,11 +1,13 @@
 #include "SmartStaticArray.hpp"
 
+#include "cuTEST/Menu.hpp"
+
 SmartStaticArray::SmartStaticArray()
 {
 	m_itemCount = 0;
 }
 
-bool SmartStaticArray::Push( const string& newItem )
+bool SmartStaticArray::Push(const string& newItem)
 {
 	if (m_itemCount == MAX_SIZE)
 	{
@@ -17,11 +19,13 @@ bool SmartStaticArray::Push( const string& newItem )
 }
 
 
-bool SmartStaticArray::Insert( int index, const string& newItem )
+bool SmartStaticArray::Insert(int index, const string& newItem)
 {
-	if(m_itemCount > MAX_SIZE || m_itemCount < 0)
+
+	//Original Code: Most likely will delete once program runs
+	/* if (m_itemCount > MAX_SIZE || m_itemCount < 0)
 	{
-		return false; // temp
+		return false;
 	}
 
 	for (int i = m_itemCount - 1; i >= index; i--)
@@ -29,29 +33,46 @@ bool SmartStaticArray::Insert( int index, const string& newItem )
 		m_data[i] = m_data[i - 1];
 
 	}
-
-
+	*/
+	return false;
 }
-
 
 bool SmartStaticArray::Extend( const SmartStaticArray& other )
 {
-	//if ()
-	//{
-		return false;
-	//}
+	return false; // placeholder
 }
 
 
 bool SmartStaticArray::Pop()
 {
-	return false; // temp
+	if (m_itemCount > 0)
+	{
+		m_itemCount--;
+	}
+
+	if (m_itemCount < 0)
+	{
+		return false;
+	}
+	else
+	{
+		return true;
+	}
 }
 
 
 bool SmartStaticArray::Remove( int index )
 {
-	return false; // temp
+	//May use this: but not currently
+	/*int locatedIndex = Get(index);
+	bool canRemove = !IsEmpty() && (locatedIndex > -1);
+	if (canRemove)
+	{
+		m_itemCount--;
+		m_data[locatedIndex] = m_data[m_itemCount];
+	}*/
+
+	return false;
 }
 
 
@@ -61,57 +82,47 @@ string SmartStaticArray::Get(int index) const
 	{
 		return "";
 	}
-	
+
 	return m_data[index];
 }
 
 
 int SmartStaticArray::Size() const
 {
-
-	return -1; // temp
+	return m_itemCount;
 }
 
 
 bool SmartStaticArray::IsFull() const
 {
-	if(m_itemCount == MAX_SIZE)
-	{
-		return true;
-	}
-
-	else
-	{
-		return false;
-	}
+	return m_itemCount == MAX_SIZE;
 }
 
 bool SmartStaticArray::IsEmpty() const
-{
-	if (m_itemCount == 0)
-	{
-		return true;
-	}
-	else
-	{
-		return false; 
-	}
-}
 
+//originally using m_itemCount == 0
+{
+	return m_itemCount == 0;
+}
 
 string SmartStaticArray::operator[]( int index )
 {
-	return "temp"; // temp
+	return "placeholder"; // placeholder
 }
 
 
 SmartStaticArray& SmartStaticArray::operator=( const SmartStaticArray& other )
 {
-    SmartStaticArray blorp; // temp
-    return blorp; // temp
+    return *this; // placeholder
 }
 
 bool SmartStaticArray::operator==( const SmartStaticArray& other )
 {
-	return false; // temp
+	return false; // placeholder
+}
+
+
+bool SmartStaticArray::operator!=(const SmartStaticArray& other)
+{
+	return !(*this == other);
 }
