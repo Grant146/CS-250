@@ -76,11 +76,6 @@ bool SmartDynamicArray::Pop()
 	{
 		m_itemCount--;
 	}
-
-	//if (m_itemCount < 0)
-	//{
-		//return true;
-	//}
 	else
 	{
 		return false;
@@ -186,7 +181,7 @@ bool SmartDynamicArray::operator==(const SmartDynamicArray& other)
 
 bool SmartDynamicArray::operator!=(const SmartDynamicArray& other)
 {
-	return false; // temp
+	return !(*this == other);
 }
 
 void SmartDynamicArray::Free()
