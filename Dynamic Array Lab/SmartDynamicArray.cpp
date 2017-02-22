@@ -16,44 +16,110 @@ SmartDynamicArray::~SmartDynamicArray()
 
 bool SmartDynamicArray::Push( const string& newItem )
 {
+	if (IsFull())
+	{
+		Resize();
+	}
 
-	return false; // temp
+	if (m_itemCount == m_arraySize)
+	{
+		return false;
+	}
+
+	m_data[m_itemCount] = newItem;
+	m_itemCount++;
 }
 
 
 bool SmartDynamicArray::Insert( int index, const string& newItem )
 {
-	return false; // temp
+	if (IsFull())
+	{
+		Resize();
+	}
+
+	if (m_itemCount > m_arraySize || m_itemCount < 0)
+	{
+		return false;
+	}
+
+	string temp = m_data[index];
+	m_data[index] = newItem;
+
+	m_itemCount++;
+
+	for (int i = index + 1; i >= m_itemCount; i++)
+	{
+		string temp2 = m_data[i];
+		m_data[i] = temp;
+		temp = temp2;
+	}
 }
 
 
 bool SmartDynamicArray::Extend( const SmartDynamicArray& other )
 {
-	return false; // temp
+	for (int i = 0; i < other.m_itemCount; i++)
+	{
+		Push(other.m_data[i]);
+	}
+	return true;
 }
 
 
 bool SmartDynamicArray::Pop()
 {
-	return false; // temp
+	if (m_itemCount > 0)
+	{
+		m_itemCount--;
+	}
+
+	if (m_itemCount < 0)
+	{
+		return true;
+	}
+	else
+	{
+		return false;
+	}
 }
 
 
 bool SmartDynamicArray::Remove( int index )
 {
-	return false; // temp
+	if (m_itemCount > m_arraySize || m_itemCount <= 0 || index > m_itemCount - 1)
+	{
+		return false;
+	}
+
+	if (m_itemCount = index)
+	{
+		Pop();
+	}
+
+	m_itemCount--;
+
+	for (int i = index; i < m_itemCount - 1; i++)
+	{
+		m_data[i] = m_data[i + 1];
+	}
 }
 
 
 string SmartDynamicArray::Get( int index ) const
 {
-	return ""; // temp
+	if (index < 0 || index >= m_itemCount)
+	{
+		return "";
+	}
+
+	return m_data[index];
 }
 
 
 int SmartDynamicArray::Size() const
 {
-	return -1; // temp
+	return m_itemCount;
 }
 
 int SmartDynamicArray::GetMaxSize() const
@@ -67,21 +133,20 @@ bool SmartDynamicArray::IsFull() const
 	{
 		return true;
 	}
-
 	else
 	{
-		return false; // temp
+		return false;
 	}
 }
 
 bool SmartDynamicArray::IsEmpty() const
 {
-	return false; // temp
+	return m_itemCount == 0;
 }
 
 string SmartDynamicArray::operator[]( int index )
 {
-	return ""; // temp
+	return m_data[index];
 }
 
 SmartDynamicArray& SmartDynamicArray::operator=( const SmartDynamicArray& other )
@@ -91,7 +156,21 @@ SmartDynamicArray& SmartDynamicArray::operator=( const SmartDynamicArray& other 
 
 bool SmartDynamicArray::operator==( const SmartDynamicArray& other )
 {
-	return false; // temp
+	if (m_itemCount == other.m_itemCount)
+	{
+		for (int i = 0; i < m_itemCount; i++)
+		{
+			if (!(m_data[i] == other.m_data[i]))
+			{
+				return false;
+			}
+		}
+	}
+	else
+	{
+		return false;
+	}
+	return true;
 }
 
 
@@ -102,24 +181,22 @@ bool SmartDynamicArray::operator!=( const SmartDynamicArray& other )
 
 void SmartDynamicArray::Free()
 {
-	if(&m_data == nullptr)
-	{
+	//if (!(m_data* == nullptr))
+	//{
 
-	}
+//	}
 }
 
 void SmartDynamicArray::Resize()
 {
+	//Resize(m_arraySize + 10);
 }
 
 
 void SmartDynamicArray::Resize( int newSize )
 {
+	//string temp = m_data[newSize];
 }
-
-
-
-
 
 
 
